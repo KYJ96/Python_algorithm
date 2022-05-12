@@ -1,0 +1,8 @@
+def solution(numbers):
+    answer = set()                       # set의 특징은 자료형의 중복을 제거하기 위한 필터 역할로 종종 사용하기도 한다.
+    for i in range(len(numbers)):
+        for j in range(i+1,len(numbers)):
+            answer.add(numbers[i]+numbers[j])
+    answer = list(answer)
+    answer.sort()                       # 정렬
+    return answer
