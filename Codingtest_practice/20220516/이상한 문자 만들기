@@ -1,0 +1,13 @@
+def solution(s):
+    answer = []
+    a = s.split(' ')
+    
+    for i in range(len(a)):
+        res = ''
+        for j in range(len(a[i])):
+            if j % 2 == 0:
+                res += a[i][j].upper()
+            else:
+                res += a[i][j].lower()
+        answer.append(res)
+    return ' '.join(answer)
