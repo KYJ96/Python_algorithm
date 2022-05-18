@@ -1,0 +1,5 @@
+def solution(x):
+    if x >= 2:
+        return solution(x-1) + solution(x-2) 
+    else:
+        return x
