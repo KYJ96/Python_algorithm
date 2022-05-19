@@ -1,0 +1,8 @@
+def solution(arr):
+    answer = arr[0]
+    for i in range(1,len(arr)):
+        for j in range(arr[i],answer*arr[i]+1,arr[i]):    # 시간 복잡도를 줄이기 위해 answer*arr[i]+1까지 arr[i] 간격으로 진행하여 최소공배수 구함
+            if j % answer == 0 and j % arr[i] == 0:
+                answer = j
+                break
+    return answer
