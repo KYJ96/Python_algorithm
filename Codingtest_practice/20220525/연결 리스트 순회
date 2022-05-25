@@ -19,7 +19,7 @@ class LinkedList:
             i += 1
         return curr
 
-    def traverse(self):       # **주어진 문제 풀이** 
+    def traverse(self):       **주어진 문제 풀이** 
         arr = []
         node = self.head
         
