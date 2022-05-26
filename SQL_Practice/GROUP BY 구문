@@ -1,0 +1,27 @@
+# 고양이와 개는 몇마리 있을까
+SELECT ANIMAL_TYPE, COUNT(ANIMAL_TYPE) 
+FROM ANIMAL_INS 
+GROUP BY ANIMAL_TYPE ORDER BY ANIMAL_TYPE
+============================================
+# 동명 동물 수 구하기
+SELECT NAME, COUNT(NAME) AS 'COUNT' 
+FROM ANIMAL_INS 
+GROUP BY NAME 
+HAVING COUNT(NAME) > 1 
+ORDER BY NAME
+============================================
+# 입양 시각 구하기(1)
+SELECT HOUR(DATETIME) AS 'HOUR', COUNT(HOUR(DATETIME)) AS 'COUNT'
+FROM ANIMAL_OUTS 
+WHERE HOUR(DATETIME)>=9 AND HOUR(DATETIME)<20 
+GROUP BY HOUR(DATETIME)
+ORDER BY HOUR(DATETIME)
+============================================
+# 입양 시각 구하기(2)
+SET @HOUR := -1; # 변수선언
+
+SELECT (@HOUR := @HOUR +1) AS HOUR,
+(SELECT COUNT(*) FROM ANIMAL_OUTS WHERE HOUR(DATETIME) = @HOUR) AS COUNT 
+FROM ANIMAL_OUTS
+WHERE @HOUR < 23
+============================================
