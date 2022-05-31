@@ -1,0 +1,18 @@
+def solution(prices):
+    # 몇초 후 가격이 떨어지는지 저장하는 배열 
+    answer = [len(prices)-i-1 for i in range(len(prices))]
+    # prices 의 인덱스를 차례대로 담아두는 배열
+    stack = [0]
+    for i in range(1,len(prices)):
+        while stack:
+            index = stack[-1]
+            # 주식 가격이 하락했다면
+            if prices[index] > prices[i]:
+                answer[index] = i - index
+                stack.pop()
+            # 떨어지지 않았다면 
+            else:
+                break
+        
+        stack.append(i)    
+    return answer
